@@ -1,3 +1,76 @@
+#finding the longest word
+
+def longest_word(words: list[str])-> str:  #function that inputs list of strings and returns a string   
+  if not words:                             #if the string is None
+    longest_word_is = None
+  else:  
+    longest_word_is = words[0]
+    for i in words:                         #for loop that retreives each string in the list
+      length = len(i)
+      if length > len(longest_word_is):     #evaluates length of strings and compares
+        longest_word_is = i
+  return longest_word_is    
+    
+#finding the shortest word
+
+def shortest_word(words: list[str]) -> str:  #function that takes a list of strings and outputs a string
+  if not words:                               #if the list is none
+    shortest_word_is = None
+  else:
+    shortest_word_is = words[0]   
+    for i in words:                         # for loop that compares the length of each word to the previous longest word
+      length = len(i)
+      if length < len(shortest_word_is):
+        shortest_word_is = i
+  return shortest_word_is
+
+
+# find odd words
+
+def odd_words(words: list[str]) -> list[str]:  #function that inputes a list of strings and outputs a list of strings
+  if not words:     # if the list is None, it returns None
+    new_list = None
+  else:   
+    new_list = []         #starting with an empty list
+    for word in words:
+      if len(word) % 2 == 1:      #checking length of each index and then appending the list
+        new_list.append(word)
+  return new_list    
+
+
+# find average words
+#that returns a list with all the strings in words whose length is ±1 from the average length of all strings in words.
+def average_words(words: list[str]) -> list[str]:
+  if not words:       #if list is None return None
+    new_list = None
+  else:
+    new_list = []       #empty list used to append to later on
+    length = 0
+    for word in words:      #for loop that sums the length of the words together
+      length = length + len(word)
+    average = length // len(words)      #taking the average using // so the answer is an integer
+    for word in words:
+      if average -1 <= len(word)<= average +1: #seeing if each word is +/- within the length of the average then appending the list
+        new_list.append(word)
+  return new_list      
+
+
+
+# find an intersection
+# that returns True if lists foo and bar have at least one element in common, anf False otherwise.
+def intersect(foo: list[str], bar: list[str]) -> bool:
+  if not foo: #if foo is None return False
+    value = False
+  else:   # if bar is none return false
+    if not bar:
+      value = False  
+    else:
+      value = False #preset value to false
+      for word in foo:    #two for loops to check if they have a word in common
+        for word2 in bar:
+          if word == word2:
+            value = True
+  return value          
 
 
 #--------------------------------------------------------------------------------#
